@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Trích xuất tên và điểm từ chứng chỉ TOEIC</title>
+  <link rel="stylesheet" type='text/css' href="{{ url_for('templates', filename ='style.css') }}">
+</head>
+<body>
+  <h1>Chọn chứng chỉ TOEIC</h1>
+  <form method=post enctype=multipart/form-data>
+    <label for="files" class="button">Choose Files</label>
+    <input id='files' type=file name=files accept="image/*" multiple>
+    <span id="file-info">Chưa có file nào được chọn</span>
+    <ul id="selected-files-list"></ul>
+    <input type=submit value=Upload>
+  </form>
+  {% if error %}
+    <p><strong>Error:</strong> {{ error }}</p>
+  {% endif %}
+
+  <script>
+    var filesInput = document.getElementById("files");
+    var fileInfo = document.getElementById("file-info");
+    var selectedFilesList = document.getElementById("selected-files-list");
+
+    filesInput.addEventListener("change", function() {
+      var numFiles = filesInput.files.length;
+      var fileNames = [];
+      for (var i = 0; i < numFiles; i++) {
+        var file = filesInput.files.item(i);
+        var fileName = file.name;
+        fileNames.push(fileName);
+      }
+      var fileInfoText = "Bạn đã chọn " + numFiles + " file: ";
+      fileInfo.innerHTML = fileInfoText;
+
+      selectedFilesList.innerHTML = "";
+      for (var i = 0; i < numFiles; i++) {
+        var listItem = document.createElement("li");
+        listItem.textContent = fileNames[i];
+        selectedFilesList.appendChild(listItem);
+      }
+    });
+
+  </script>
+</body>
+</html>
