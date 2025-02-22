@@ -9,6 +9,8 @@ Toeic Score Detection is a project that utilizes Optical Character Recognition (
 - **Score Region Detection**: Uses YOLOv8 to identify the location of the TOEIC score on the score sheet.
 - **Character Recognition**: Applies OCR to convert the detected score image into numerical text.
 - **Web Interface**: Provides a user-friendly web interface for uploading images and viewing recognition results.
+
+## Example
 Image:
 ![BL1](https://github.com/user-attachments/assets/e1c966bc-dca4-4322-aba3-3cc389e7d15e)
 Result:
